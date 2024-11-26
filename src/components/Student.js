@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 import { BASE_URL } from "../config";
 import Loader from "./Loader";
 import { toast } from "react-toastify";
+import { toastObj } from "../templateObjects";
 
 const Student = () => {
   const [studentData, setStudentData] = useState([]);
@@ -21,16 +22,7 @@ const Student = () => {
       setLoading(false);
     } catch (err) {
       setLoading(false);
-      toast.error("Something went wrong!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.error("Something went wrong!", toastObj);
       setTimeout(() => {
         window.location.href = "./login";
       }, 1000);

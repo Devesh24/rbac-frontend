@@ -9,32 +9,26 @@ import "../styles/AddUser.css";
 import { toast } from "react-toastify";
 import Loader from "./Loader";
 import { useAuth } from "../Hooks/auth";
+import { toastObj } from "../templateObjects";
 
 const AddUser = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [checkPass, setCheckPass] = useState("");
-  const [type, setType] = useState("");
+  const [checkPass, setCheckPass] = useState(""); // Confirm password state
+  const [type, setType] = useState(""); // User type (e.g., Admin, Faculty)
   const { cookies } = useAuth();
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Check if the passwords match
     if (checkPass !== password) {
-      return toast.error("Passwords do not match!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      return toast.error("Passwords do not match!", toastObj);
     }
 
     setLoading(true);
     try {
+      // Ask the user for confirmation before submitting the form
       const [isOk] = await AlertConfirm("Are you sure?");
 
       if (!isOk) return;
@@ -48,37 +42,18 @@ const AddUser = () => {
         },
         {
           headers: {
-            token: `Bearer ${accessToken}`,
+            token: `Bearer ${accessToken}`, // Send the token in the headers for authorization
           },
         }
       );
-      toast.success("User registered successfully!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.success("User registered successfully!", toastObj);
       setLoading(false);
       setTimeout(() => {
         window.location.reload();
       }, [1000]);
     } catch (err) {
       setLoading(false);
-      console.log(err);
-      return toast.error("Something went wrong!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      return toast.error("Something went wrong!", toastObj);
     }
   };
 

@@ -5,6 +5,7 @@ import "react-alert-confirm/lib/style.css";
 import { BASE_URL } from "../config";
 import { toast } from "react-toastify";
 import { useAuth } from "../Hooks/auth";
+import {toastObj} from '../templateObjects'
 
 const EditUser = ({ userData }) => {
   const [userNew, setUserNew] = useState({});
@@ -26,30 +27,12 @@ const EditUser = ({ userData }) => {
           token: `Bearer ${accessToken}`,
         },
       });
-      toast.success("User updated successfully!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.success("User updated successfully!", toastObj);
       setTimeout(() => {
         document.location.reload();
       }, 500);
     } catch (err) {
-      return toast.error("Something went wrong!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      return toast.error("Something went wrong!", toastObj);
     }
   };
 

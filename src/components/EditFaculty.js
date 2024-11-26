@@ -5,6 +5,7 @@ import "react-alert-confirm/lib/style.css";
 import AlertConfirm from "react-alert-confirm";
 import { useAuth } from "../Hooks/auth";
 import { toast } from "react-toastify";
+import { toastObj } from "../templateObjects";
 
 const EditFaculty = ({ facData }) => {
   const [facNew, setFacNew] = useState({});
@@ -19,16 +20,7 @@ const EditFaculty = ({ facData }) => {
       /^\d+$/.test(facNew.facultyPhone) === false ||
       facNew.facultyPhone.length !== 10
     ) {
-      return toast.error("Invalid phone number!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      return toast.error("Invalid phone number!", toastObj);
     }
     try {
       const [isOk] = await AlertConfirm("Are you sure?");
@@ -40,30 +32,12 @@ const EditFaculty = ({ facData }) => {
           token: `Bearer ${accessToken}`,
         },
       });
-      toast.success("Faculty updated successfully!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.success("Faculty updated successfully!", toastObj);
       setTimeout(() => {
         document.location.reload();
       }, 500);
     } catch (err) {
-      return toast.error("Something went wrong!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      return toast.error("Something went wrong!", toastObj);
     }
   };
 

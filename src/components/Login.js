@@ -9,6 +9,7 @@ import CryptoJS from "crypto-js";
 import { useCookies } from "react-cookie";
 import Loader from "./Loader";
 import { reverseDate } from "../utils";
+import { toastObj } from "../templateObjects";
 
 const Login = () => {
   const [admNo, setAdmNo] = useState("");
@@ -32,16 +33,7 @@ const Login = () => {
       });
       setLoading(false);
       if (data.status === 200) {
-        toast.success("Logged in successfully!", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
+        toast.success("Logged in successfully!", toastObj);
         window.localStorage.setItem("studentToken", data.data.accessToken);
         setTimeout(() => {
           setAdmNo("");
@@ -51,16 +43,7 @@ const Login = () => {
       }
     } catch (err) {
       setLoading(false);
-      toast.error(err.response.data, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.error(err.response.data, toastObj);
     }
   };
 
@@ -77,16 +60,7 @@ const Login = () => {
         if (data.data.type !== "Faculty" || data.data.permission === "No") {
           navigate("/error-403");
         } else {
-          toast.success("Logged in successfully!", {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
+          toast.success("Logged in successfully!", toastObj);
 
           setCookies("token", data.data.accessToken);
           const encryptedType = CryptoJS.AES.encrypt(
@@ -104,16 +78,7 @@ const Login = () => {
       }
     } catch (err) {
       setLoading(false);
-      toast.error(err.response.data, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.error(err.response.data, toastObj);
     }
   };
 
@@ -139,16 +104,7 @@ const Login = () => {
           ).toString();
           setCookies("type", encryptedType);
 
-          toast.success("Logged in successfully!", {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
+          toast.success("Logged in successfully!", toastObj);
           setTimeout(() => {
             setAdminName("");
             setAdminPass("");
@@ -158,16 +114,7 @@ const Login = () => {
       }
     } catch (err) {
       setLoading(false);
-      toast.error(err.response.data, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.error(err.response.data, toastObj);
     }
   };
 

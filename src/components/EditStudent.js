@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { BASE_URL } from '../config';
 import {reverseDate} from '../utils';
-import { studentObj } from '../templateObjects';
+import { studentObj, toastObj } from '../templateObjects';
 import AlertConfirm from 'react-alert-confirm';
 import 'react-alert-confirm/lib/style.css';
 import { useAuth } from '../Hooks/auth';
@@ -25,16 +25,7 @@ const EditStudent = ({ studentData }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (/^\d+$/.test(studentNew.phNo) === false || studentNew.phNo.length !== 10) {
-      return toast.error("Invalid phone number!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      return toast.error("Invalid phone number!", toastObj);
     }
     try {
       const [isOk] = await AlertConfirm('Are you sure?');
@@ -51,30 +42,12 @@ const EditStudent = ({ studentData }) => {
             token: `Bearer ${accessToken}`
           }
         });
-      toast.success("Student updated successfully!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.success("Student updated successfully!", toastObj);
       setTimeout(() => {
         window.location = `/admin-student-profile/${studentData._id}`;
       }, 500);
     } catch (err) {
-      return toast.error("Something went wrong!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      return toast.error("Something went wrong!", toastObj);
     }
 
   };

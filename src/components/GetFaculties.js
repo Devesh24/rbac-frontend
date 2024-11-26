@@ -11,6 +11,7 @@ import AlertConfirm from "react-alert-confirm";
 import { useAuth } from "../Hooks/auth";
 import Loader from "./Loader";
 import { toast } from "react-toastify";
+import { toastObj } from "../templateObjects";
 
 const GetFaculties = () => {
   const [faculties, setFaculties] = useState([]);
@@ -26,16 +27,7 @@ const GetFaculties = () => {
       setLoading(false);
     } catch (err) {
       setLoading(false);
-      return toast.error("Something went wrong!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      return toast.error("Something went wrong!", toastObj);
     }
   };
 
@@ -55,30 +47,12 @@ const GetFaculties = () => {
           token: `Bearer ${accessToken}`,
         },
       });
-      toast.success("Faculty deleted successfully!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.success("Faculty deleted successfully!", toastObj);
       setLoading(false);
       fetchFaculties();
     } catch (err) {
       setLoading(false);
-      return toast.error("Something went wrong!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      return toast.error("Something went wrong!", toastObj);
     }
   };
 

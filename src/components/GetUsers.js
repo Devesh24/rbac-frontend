@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import { useAuth } from "../Hooks/auth";
 import Loader from "./Loader";
 import "../styles/GetUsers.css";
+import { toastObj } from "../templateObjects";
 
 const GetUsers = () => {
   const [users, setUsers] = useState([]);
@@ -42,16 +43,7 @@ const GetUsers = () => {
       setLoading(false);
     } catch (err) {
       setLoading(false);
-      return toast.error("Something went wrong!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      return toast.error("Something went wrong!", toastObj);
     }
   }, [accessToken]);
 
@@ -77,35 +69,16 @@ const GetUsers = () => {
       });
       fetchData();
       setLoading(false);
-      toast.success("User Deleted successfully!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.success("User Deleted successfully!", toastObj);
     } catch (err) {
       setLoading(false);
-      return toast.error("Something went wrong!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      return toast.error("Something went wrong!", toastObj);
     }
   };
 
   useEffect(() => {
-    if (searchDetails.searchUsername === "") {
-      setFilteredData(users);
-    } else if (searchDetails.searchUsername !== "") {
+    // Filter by username if provided
+    if (searchDetails.searchUsername !== "") {
       setFilteredData(
         users.filter((person) => {
           return person.username
@@ -114,6 +87,7 @@ const GetUsers = () => {
         })
       );
     }
+    // Filter by type if provided
     if (searchDetails.searchType !== "") {
       setFilteredData(
         users.filter((person) => {
@@ -121,6 +95,7 @@ const GetUsers = () => {
         })
       );
     }
+    // Filter by permission if provided
     if (searchDetails.searchPermi !== "") {
       setFilteredData(
         users.filter((person) => {

@@ -9,6 +9,7 @@ import Navbar from "./Navbar";
 import { useAuth } from "../Hooks/auth";
 import Loader from "./Loader";
 import { toast } from "react-toastify";
+import {toastObj} from '../templateObjects'
 
 const SearchStudent = () => {
   const [searchResult, setSearchResult] = useState([]);
@@ -34,16 +35,7 @@ const SearchStudent = () => {
         searchDetails.searchAdmNo === "" &&
         searchDetails.searchClass === ""
       ) {
-        return toast.error("Please enter any one field!", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
+        return toast.error("Please enter any one field!", toastObj);
       }
       setLoading(true);
       data = await axios.get(
@@ -58,16 +50,7 @@ const SearchStudent = () => {
       setLoading(false);
     } catch (err) {
       setLoading(false);
-      toast.error("Something went wrong!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.error("Something went wrong!", toastObj);
     }
   };
 

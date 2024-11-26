@@ -5,7 +5,7 @@ import axios from "axios";
 import { Col, Container, Form, FormGroup, Row } from "reactstrap";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import { facultyObj } from "../templateObjects";
+import { facultyObj, toastObj } from "../templateObjects";
 import "react-alert-confirm/lib/style.css";
 import AlertConfirm from "react-alert-confirm";
 import { useAuth } from "../Hooks/auth";
@@ -13,10 +13,14 @@ import Loader from "./Loader";
 import { toast } from "react-toastify";
 
 const AddFaculty = () => {
+  // State to manage the form input values and loading state
   const [facultyDetails, setfacultyDetails] = useState(facultyObj);
   const [loading, setLoading] = useState(false);
+
+  // Use the custom `useAuth` hook to get the authentication token
   const { cookies } = useAuth();
 
+  // Handle input change for form fields
   const handleChange = (e) => {
     setfacultyDetails((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
@@ -24,23 +28,17 @@ const AddFaculty = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     if (facultyDetails.facultyPhone !== "") {
+      // Validate phone number before submission
       if (
         /^\d+$/.test(facultyDetails.facultyPhone) === false ||
         facultyDetails.facultyPhone.length !== 10
       ) {
-        return toast.error("Invalid phone no.!", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
+        return toast.error("Invalid phone no.!", toastObj);
       }
     }
+
     try {
+      // Ask for user confirmation before proceeding with the form submission
       const [isOk] = await AlertConfirm("Are you sure?");
       if (!isOk) return;
 
@@ -52,31 +50,13 @@ const AddFaculty = () => {
         },
       });
       setLoading(false);
-      toast.success("Faculty added successfully!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.success("Faculty added successfully!", toastObj);
       setTimeout(() => {
         window.location.reload();
       }, 500);
     } catch (err) {
       setLoading(false);
-      return toast.error("Something went wrong!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      return toast.error("Something went wrong!", toastObj);
     }
   };
   return (

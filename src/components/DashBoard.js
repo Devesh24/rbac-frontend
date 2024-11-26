@@ -6,11 +6,12 @@ import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
 import CountUp, { useCountUp } from 'react-countup';
 import axios from 'axios'
-import { BASE_URL, CRYPTO_SEC, CURRENT_YEAR } from "../config";
+import { BASE_URL, CRYPTO_SEC } from "../config";
 import CryptoJS from "crypto-js";
 import { useAuth } from "../Hooks/auth";
 import { toast } from 'react-toastify';
 import Loader from './Loader'
+import {toastObj} from '../templateObjects'
 
 
 const DashBoard = () => {
@@ -39,16 +40,7 @@ const DashBoard = () => {
             setLoading(false)
         } catch (err) {
             setLoading(false)
-            toast.error("Something went wrong!", {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
+            toast.error("Something went wrong!", toastObj);
         }
     },[cookies]);
 

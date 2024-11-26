@@ -13,18 +13,22 @@ import AlertConfirm from "react-alert-confirm";
 import "react-alert-confirm/lib/style.css";
 import CryptoJS from "crypto-js";
 import EditStudent from "./EditStudent";
+import { toastObj } from "../templateObjects";
 
 const AdminStudentProfile = () => {
   const [studentData, setStudentData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const { id } = useParams();
-  const { cookies } = useAuth();
-  const accessToken = cookies.token;
+  const { id } = useParams(); // Get student ID from the URL
+  const { cookies } = useAuth(); // Access the cookies from the auth context
+  const accessToken = cookies.token;  // Retrieve the token from cookies
+
+  // Decrypt the user type from cookies
   const bytes = CryptoJS.AES.decrypt(cookies.type, CRYPTO_SEC);
   const userType = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
 
-  const navigate = useNavigate();
+  const navigate = useNavigate();  // Used for navigation after actions like deletion
 
+  // Fetch student data by ID
   const fetchData = useCallback(async () => {
     try {
       setLoading(true);
@@ -39,23 +43,16 @@ const AdminStudentProfile = () => {
       setLoading(false);
     } catch (err) {
       setLoading(false);
-      toast.error("Something went wrong!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.error("Something went wrong!", toastObj);
     }
-  }, [accessToken, id]);
+  }, [accessToken, id]);  // Re-fetch if token or ID changes
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+  }, [fetchData]); // Trigger fetchData on component mount
 
+
+   // Handler for deleting a student
   const deleteHandler = async (id) => {
     try {
       const [isOk] = await AlertConfirm("Are you sure?");
@@ -68,30 +65,12 @@ const AdminStudentProfile = () => {
           token: `Bearer ${accessToken}`,
         },
       });
-      toast.success("Student deleted successfully!!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.success("Student deleted successfully!!", toastObj);
       setLoading(false);
-      navigate("/search-student");
+      navigate("/search-student"); // Redirect to the search student page after deletion
     } catch (err) {
       setLoading(false);
-      toast.error("Something went wrong!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.error("Something went wrong!", toastObj);
       return;
     }
   };
@@ -166,6 +145,7 @@ const AdminStudentProfile = () => {
             >
               Edit Profile
             </button>
+            {/* Show the delete button only when the user is admin */}
             {userType === "Admin" && (
               <button
                 className="d-block btn btn-danger"

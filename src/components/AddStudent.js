@@ -6,7 +6,7 @@ import { Col, Container, Form, FormGroup, Row } from "reactstrap";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { reverseDate } from "../utils";
-import { studentObj } from "../templateObjects";
+import { studentObj, toastObj } from "../templateObjects";
 import "react-alert-confirm/lib/style.css";
 import AlertConfirm from "react-alert-confirm";
 import { useAuth } from "../Hooks/auth";
@@ -14,7 +14,10 @@ import Loader from "./Loader";
 import { toast } from "react-toastify";
 
 const AddStudent = () => {
+  // Get today's date in ISO format, removing the time part
   var today = new Date().toISOString().split("T")[0];
+
+  // Destructure cookies from the useAuth hook to get the token
   const { cookies } = useAuth();
 
   const [studentDetails, setstudentDetails] = useState(studentObj);
@@ -26,25 +29,19 @@ const AddStudent = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    // Validate phone number input - should be numeric and 10 digits long
     if (
       /^\d+$/.test(studentDetails.phNo) === false ||
       studentDetails.phNo.length !== 10
     ) {
-      return toast.error("Invalid phone number!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      return toast.error("Invalid phone number!", toastObj);
     }
     try {
+      // Ask for user confirmation before proceeding with the form submission
       const [isOk] = await AlertConfirm("Are you sure?");
       if (!isOk) return;
       setLoading(true);
+
       studentDetails.dob = reverseDate(studentDetails.dob);
       studentDetails.doa = reverseDate(studentDetails.doa);
       const accessToken = cookies.token;
@@ -53,32 +50,15 @@ const AddStudent = () => {
           token: `Bearer ${accessToken}`,
         },
       });
-      toast.success("Student added successfully!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      
+      toast.success("Student added successfully!", toastObj);
       setLoading(false);
       setTimeout(() => {
         window.location.reload();
       }, [1000]);
     } catch (err) {
       setLoading(false);
-      return toast.error("Something went wrong!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      return toast.error("Something went wrong!", toastObj);
     }
   };
 
