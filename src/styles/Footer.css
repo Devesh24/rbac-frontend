@@ -1,0 +1,39 @@
+.footer {
+  font-family: var(--primary-font);
+  font-size: 1rem;
+}
+
+.copyright a {
+  text-decoration: underline;
+  text-underline-offset: 1.5px;
+  color: var(--secondary-clr);
+}
+
+.copyright a:hover {
+  color: red;
+}
+
+.copyright_main {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #f7b365;
+  color: var(--secondary-clr);
+  padding: 0.5rem 1.5rem !important;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  padding: 0 1rem;
+}
+
+
+@media (max-width: 540px) {
+  .copyright_main {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .copyright {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+  }
+}

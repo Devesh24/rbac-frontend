@@ -1,0 +1,88 @@
+.search_fac_list_main{
+    min-height: 85vh;
+}
+
+.all-fac-head {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-family: 'Prompt', sans-serif;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+.admin-get-fac-img-box {
+    width: 100%;
+}
+
+.admin-get-fac-img-box img {
+    width: 50%;
+    border-radius: 50%;
+}
+
+.admin_fac_result {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search_student_list_cont i {
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.search_student_list_cont .fa-trash:hover {
+    background-color: rgb(245, 41, 41);
+    color: white;
+}
+
+.search_student_list_cont .fa-pen-to-square:hover {
+    background-color: blue;
+    color: white;
+}
+
+
+
+.small_screen_fac_result {
+    display: none;
+}
+
+.fac_res_headers {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    background-color: var(--tertiary-clr);
+    color: white;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.2rem 0;
+}
+
+.fac_res_list {
+    font-size: 0.8rem;
+    align-items: center;
+    background-color: antiquewhite;
+    margin-bottom: 0.2rem;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.2rem 0;
+}
+
+
+/*--------------------*/
+
+@media (max-width: 1000px) {
+    .small_screen_fac_result {
+        display: block;
+    }
+
+    .big_screen_fac_result {
+        display: none;
+    }
+
+}

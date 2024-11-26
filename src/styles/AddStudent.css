@@ -1,0 +1,48 @@
+.add_student_main_cont {
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add_student_main_cont Form {
+    width: 90%;
+    font-family: var(--primary-font);
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    padding: 3rem 0 3rem 3rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.351);
+    font-weight: 600;
+}
+
+.add_student_main_cont Form h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-family: 'Prompt', sans-serif;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+
+
+
+/*------------------------*/
+
+
+@media (max-width: 1000px) {
+    .add_student_main_cont Form {
+        width: 100%;
+        padding: 1rem 0;
+    }
+}
+
+@media (max-width: 540px) {
+    .add_student_main_cont Form {
+        width: 100%;
+        padding: 1rem 0;
+    }
+
+    .add_student_main_cont{
+        padding: 3rem 1rem;
+    }
+}

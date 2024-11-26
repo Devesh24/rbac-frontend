@@ -1,0 +1,43 @@
+.add_faculty_main_cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 2rem;
+}
+
+.add_faculty_main_cont Form {
+    width: 70%;
+    font-family: var(--primary-font);
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    padding: 3rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.351);
+    font-weight: 600;
+}
+
+.add_faculty_main_cont Form h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-family: 'Prompt', sans-serif;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+
+
+@media (max-width: 1000px) {
+    .add_faculty_main_cont Form {
+        width: 100%;
+    }
+}
+
+@media (max-width: 540px) {
+    .add_faculty_main_cont Form {
+        width: 100%;
+        padding: 3rem 0;
+    }
+
+    .add_faculty_main_cont {
+        padding: 3rem 1rem;
+    }
+}

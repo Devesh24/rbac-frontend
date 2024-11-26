@@ -1,0 +1,74 @@
+.error_403 {
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--secondary-font);
+    text-transform: uppercase;
+    background-color: rgb(0, 0, 23);
+}
+
+.err_main_cont {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7rem;
+}
+
+.error_403_inner {
+    text-align: center;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.error_403 h1 {
+    font-size: 5rem;
+    letter-spacing: 0.5rem;
+    color: red;
+}
+
+.error_403 h3 {
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
+}
+
+.error_403 p {
+    font-size: 1.2rem;
+    letter-spacing: 0.4rem;
+}
+
+
+
+@media (max-width: 540px) {
+    .err_main_cont {
+        gap: 3rem;
+        padding: 1rem;
+    }
+
+    .err_main_cont img {
+        width: 60%;
+    }
+
+    .error_403_inner {
+        gap: 0.5rem;
+    }
+
+    .error_403 h1 {
+        font-size: 3rem;
+        letter-spacing: 0.2rem;
+    }
+
+    .error_403 h3 {
+        font-size: 1.5rem;
+        letter-spacing: 0.3rem;
+    }
+
+    .error_403 p {
+        font-size: 0.8rem;
+        letter-spacing: 0.3rem;
+    }
+}

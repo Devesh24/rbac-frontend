@@ -1,0 +1,45 @@
+.small_screen_user_res {
+    display: none;
+}
+
+.user_res_headers {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    background-color: var(--tertiary-clr);
+    color: white;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 1.5rem; */
+    padding: 0.2rem 0;
+}
+
+.user_res_list {
+    font-size: 0.8rem;
+    align-items: center;
+    background-color: antiquewhite;
+    margin-bottom: 0.2rem;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 1.5rem; */
+    padding: 0.2rem 0;
+}
+
+
+/*--------------------*/
+
+@media (max-width: 1000px) {
+    .small_screen_user_res {
+        display: block;
+    }
+
+    .big_screen_user_res {
+        display: none;
+    }
+
+}

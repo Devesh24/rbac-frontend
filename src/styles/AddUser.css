@@ -1,0 +1,40 @@
+.register_user_main_cont {
+    width: 100%;
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh;
+}
+
+.register_user_main_cont form {
+    width: 60%;
+    font-family: var(--primary-font);
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    padding: 3rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.351);
+    font-weight: 600;
+}
+
+.register_user_main_cont form h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-family: 'Prompt', sans-serif;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+
+
+/*-----------------------*/
+
+@media (max-width: 1000px) {
+    .register_user_main_cont form{
+        width: 95%;
+        padding: 3rem 1rem;
+    }
+    .register_user_main_cont{
+        padding: 3rem 0.5rem;
+    }
+}

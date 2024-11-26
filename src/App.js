@@ -1,23 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import { ToastContainer } from "react-toastify";
+import "./App.css";
+import Login from "./components/Login";
+import { Route, Routes } from "react-router-dom";
+import Error403 from "./components/Error403";
+import DashBoard from "./components/DashBoard";
+import { ProtectRoutes } from "./Hooks/protectRoutes";
+import { ProtectAdminRoutes } from "./Hooks/protectAdminRoutes";
+import AddUser from "./components/AddUser";
+import "react-toastify/dist/ReactToastify.css";
+import AddStudent from "./components/AddStudent";
+import SearchStudent from "./components/SearchStudent";
+import AddFaculty from "./components/AddFaculty";
+import GetFaculties from "./components/GetFaculties";
+import GetUsers from "./components/GetUsers";
+import Student from "./components/Student";
+import AdminStudentProfile from "./components/AdminStudentProfile";
+import Error404 from "./components/Error404";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ToastContainer />
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/error-403" element={<Error403 />} />
+        <Route path="/student" element={<Student />} />
+
+        <Route element={<ProtectRoutes />}>
+          <Route path="dashboard" element={<DashBoard />} />
+          <Route path="/search-student" element={<SearchStudent />} />
+          <Route
+            path="/admin-student-profile/:id"
+            element={<AdminStudentProfile />}
+          />
+          <Route path="/get-faculties" element={<GetFaculties />} />
+        </Route>
+
+        <Route element={<ProtectAdminRoutes />}>
+          <Route path="/register" element={<AddUser />} />
+          <Route path="/add-student" element={<AddStudent />} />
+          <Route path="/add-faculty" element={<AddFaculty />} />
+          <Route path="/get-users" element={<GetUsers />} />
+        </Route>
+
+        <Route path="*" element={<Error404 />} />
+      </Routes>
     </div>
   );
 }

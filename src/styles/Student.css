@@ -1,0 +1,118 @@
+.admin_student_profile {
+    background-color: rgb(239, 239, 239);
+    font-family: var(--primary-font);
+    width: 100%;
+    padding: 3rem 10rem;
+}
+
+.edit_student_btn_box {
+    width: 100%;
+    text-align: center;
+}
+
+.edit_student_btn_box button {
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+/* -------------------------------------------------------- */
+
+
+/* --------------student profile ----------------------------- */
+
+.profile_top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap-reverse;
+}
+
+.profile_pic {
+    width: 15vw;
+}
+
+.profile_pic img {
+    width: 100%;
+}
+
+.profile_head {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 2rem;
+}
+
+.profile_head .stu_name {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    font-family: var(--secondary-font);
+    letter-spacing: 0.4rem;
+    color: var(--secondary-clr);
+}
+
+.profile_head_grp {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile_head_grp p {
+    font-size: 1.1rem;
+}
+
+.profile_bottom {
+    width: 100%;
+    padding: 3rem 0;
+}
+
+/* --------------------------------------------------- */
+
+
+
+
+@media (max-width: 540px) {
+
+    .profile_top {
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .profile_pic {
+        width: 50%;
+    }
+
+    .profile_head {
+        gap: 0.5rem;
+        padding-bottom: 0rem;
+    }
+
+    .profile_head .stu_name {
+        font-size: 1.5rem;
+        letter-spacing: 0.2rem;
+        line-height: 2.4rem;
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .profile_head_grp h4 {
+        font-size: 1rem;
+    }
+
+    .profile_head_grp p {
+        font-size: 0.8rem;
+    }
+
+    .profile_bottom {
+        padding: 1rem 0;
+    }
+}
+
+
+
+@media (max-width: 540px) {
+    .admin_student_profile {
+        padding: 3rem 2rem;
+    }
+}

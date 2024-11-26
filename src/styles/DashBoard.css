@@ -1,0 +1,266 @@
+.admin_main_cont {
+    width: 100%;
+    height: 100vh;
+}
+
+.admin_main_cont header {
+    width: 100%;
+    background-color: var(--secondary-clr);
+}
+  
+.topBanner_admin {
+    min-height: 30vh;
+    width: 100%;
+    background-color: var(--secondary-clr);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 2rem 6rem;
+    gap: 1rem;
+}
+
+.topBanner_admin_head {
+    font-size: 2.5rem;
+    padding: 1rem;
+    color: white;
+    font-family: var(--secondary-font);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    line-height: 2.5rem;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}
+
+.topBanner_admin_cat {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    font-family: var(--primary-font);
+    gap: 1rem;
+    border: 2px solid rgb(194, 41, 232);
+    border-radius: 0.5rem;
+    min-width: 140px;
+}
+
+.topBanner_admin_cat:hover {
+    background-color: rgba(194, 41, 232, 0.125);
+}
+
+.topBanner_admin_cat i {
+    color: var(--primary-clr);
+    font-size: 2.3rem;
+}
+
+.topbanner_cat_admin_head {
+    font-weight: 600;
+    text-align: center;
+}
+
+
+.admin_stats_main {
+    padding: 3rem 6rem;
+    background-color: rgb(255, 247, 247);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.student_chart {
+    width: 60%;
+    height: 53vh;
+    background-color: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 0 15px rgb(221, 221, 221);
+}
+
+.chart_grp {
+    height: 53vh;
+    width: 30%;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.stats_small_box {
+    background-color: white;
+    box-shadow: 0 0 15px rgb(221, 221, 221);
+    height: 50%;
+    display: flex;
+}
+
+.stats_small_box p {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--primary-font);
+    padding: 3rem;
+    text-align: center;
+}
+
+.stats_title {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.stats_cnt {
+    font-size: 3rem;
+    color: white;
+    background-color: var(--primary-clr);
+}
+
+
+.admin_student_main,
+.admin_user_main {
+    width: 100%;
+    background-color: var(--secondary-clr);
+    padding: 4rem 6rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 3rem;
+}
+
+.admin_cat_box {
+    min-width: 20%;
+    border-radius: 2rem;
+}
+
+.admin_cat_head {
+    font-family: var(--secondary-font);
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--primary-clr);
+}
+
+.admin_links_box_grp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+.admin_links_box {
+    width: 100%;
+    font-family: var(--primary-font);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    border-radius: 0.5rem;
+}
+
+.admin_links_box:hover {
+    cursor: pointer;
+    background-color: var(--primary-clr);
+    color: white;
+}
+
+.admin_user_main {
+    justify-content: center;
+}
+
+.admin_user_perm_box {
+    width: 25%;
+    min-width: 300px;
+    font-family: var(--primary-font);
+    padding: 4rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    border-radius: 0.5rem;
+    color: white;
+    border: 2px solid rgb(194, 41, 232);
+    text-decoration: underline;
+    text-underline-offset: 3.5px;
+}
+
+.admin_user_perm_box:hover {
+    background-color: rgba(194, 41, 232, 0.125);
+    cursor: pointer;
+}
+
+
+
+@media (max-width: 540px) {
+
+    .admin_student_main,
+    .admin_user_main {
+        padding: 3rem 2rem;
+    }
+    
+    .topBanner_admin {
+        padding: 2rem;
+    }
+
+    .topBanner_admin_cat {
+        min-width: 80%;
+        padding: 3rem;
+    }
+
+    .topBanner_admin_head {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .admin_stats_main {
+        padding: 3rem 1rem;
+    }
+
+    .student_chart {
+        padding: 1rem;
+        width: 100%;
+        height: fit-content;
+    }
+
+    .chart_grp {
+        margin: 0 6rem;
+        width: 100%;
+        height: 30vh;
+        gap: 1rem;
+    }
+
+    .stats_small_box p {
+        width: 100%;
+        padding: 1.5rem;
+    }
+
+    .stats_title {
+        font-size: 1rem;
+    }
+
+    .stats_cnt {
+        font-size: 2.5rem;
+    }
+
+    .admin_cat_box{
+        width: 90%;
+    }
+
+    .admin_user_perm_box {
+        font-size: 1.1rem;
+        padding: 3.5rem 1.5rem;
+    }
+}
